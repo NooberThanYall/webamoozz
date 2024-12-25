@@ -62,7 +62,7 @@ export function Navbar() {
           <SheetContent side="right" className="bg-white">
             <nav className="flex flex-col space-y-4 mt-4 bg-white ">
               {navItems.map((item) => (
-                <li className="flex items-center" key={item.key}>
+                <li className="flex items-center" key={item.title}>
                 {/* {item.icon} */}
                 {item.icon}
                 <Button
