@@ -24,7 +24,7 @@ const orders = [
 
 const Intro = () => {
   return (
-    <div className="max-w-4xl mx-auto py-6">
+    <div className="max-w-4xl mx-auto md:py-6 flex flex-col items-center">
       {[...Array(3)].map((_, i) => {
         return (
           <TheImageAndTextThing i={i + 1} key={i} info={thingsDescription[i]} orders={orders[i]}/>

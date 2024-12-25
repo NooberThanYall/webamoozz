@@ -3,22 +3,22 @@ import React from "react";
 
 const BlogCard = ({title, desc, srcProp, altProp}: {title: string, desc: string, srcProp: string, altProp: string}) => {
   return (
-    <div className="w-[calc(25%-20px)] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-4">
+    <div className="md:w-[calc(25%-20px)] w-[calc(50%-10px)] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-4">
       <a href="#">
         <Image className="rounded-t-lg" src={srcProp} alt={altProp} width={364} height={240}/>
       </a>
       <div className="p-5">
         <a href="#">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 md:text-xl text-sm font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>
         </a>
-        <p className="mb-3 text-sm font-normal text-gray-700 dark:text-gray-400">
+        <p className="mb-3 md:text-sm hidden md:block text-[11px] leading-5 font-normal text-gray-700 dark:text-gray-400">
           {desc}
         </p>
         <a
           href="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="inline-flex items-center md:px-3 px-1  md:py-2 md:text-sm text-[10px] font-medium text-center text-white bg-green-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           بیشتر بخوانید
           <svg

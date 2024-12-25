@@ -59,17 +59,22 @@ export function Navbar() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="flex flex-col space-y-4 mt-4">
+          <SheetContent side="right" className="bg-white">
+            <nav className="flex flex-col space-y-4 mt-4 bg-white ">
               {navItems.map((item) => (
+                <li className="flex items-center" key={item.key}>
+                {/* {item.icon} */}
+                {item.icon}
                 <Button
                   key={item.title}
+                  className="text-xl"
                   variant="ghost"
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
                   <Link href={item.href}>{item.title}</Link>
                 </Button>
+                </li>
               ))}
             </nav>
           </SheetContent>

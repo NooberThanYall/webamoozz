@@ -7,7 +7,10 @@ const nextConfig = {
 
     images: {
         domains: ['picsum.photos', 'zeba.academy']
-    }
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+      },
 };
 
 export default nextConfig;

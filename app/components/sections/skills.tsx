@@ -48,7 +48,7 @@ const people = [
 const Skills = () => {
 
   return (
-    <div className="flex flex- items-center justify-center mt-10 w-full">
+    <div className="flex flex- items-center justify-center mt-10 w-full ">
       <AnimatedTooltip items={people} />
       {/* <div className="max-w-7xl mx-auto">
       
