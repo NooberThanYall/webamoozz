@@ -1,5 +1,8 @@
-import React from "react";
+'use client'
+import React, { useRef } from "react";
 import TheImageAndTextThing from "../partials/TheImageAndTextThing";
+import { motion, useInView, Variants } from 'framer-motion';
+import { containerVariants } from "./RecentBlogs";
 
 const thingsDescription = [
   {
@@ -22,15 +25,21 @@ const orders = [
   [1, 0],
 ];
 
+
 const Intro = () => {
+  console.log();
+  
+
   return (
-    <div className="max-w-4xl mx-auto md:py-6 flex flex-col items-center ">
+    <motion.div
+    className="max-w-4xl mx-auto md:py-6 flex flex-col items-center "
+    >
       {[...Array(3)].map((_, i) => {
         return (
-          <TheImageAndTextThing i={i + 1} key={i} info={thingsDescription[i]} orders={orders[i]}/>
+          <TheImageAndTextThing i={i + 1} key={i} info={thingsDescription[i]} orders={orders[i]} />
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 

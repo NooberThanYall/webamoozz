@@ -1,5 +1,5 @@
 'use server'
-export async function signUpAction (prevState, formData: FormData) {
+export async function signUpAction (  formData: FormData) {
     const values = Object.fromEntries(formData);
 
     console.log(values)

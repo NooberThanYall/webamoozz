@@ -15,7 +15,7 @@ export default function Card() {
 
   console.log(inView);
   
-  const handleMouseMove = (event) => {
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent> /* what type should i be using for this? its not letting me build*/ ) => {
     const offsetX = event.clientX - window.innerWidth / 2;
     const offsetY = event.clientY - window.innerHeight / 2;
     console.log(event.clientX);
