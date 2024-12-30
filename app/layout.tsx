@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 // import { NavigationMenuDemo } from "./components/partials/Navbar";
 import { Navbar } from "./components/navbar";
+import connectDB from "@/lib/db/mongodb";
 
 // const yekanSans = localFont({
 //   src: "./fonts/BYekan.ttf",
@@ -10,6 +11,7 @@ import { Navbar } from "./components/navbar";
 //   weight: "100 900",
 // });
 const myFont = localFont({ src: './Estedad-Medium.ttf' })
+const myFontBold = localFont({ src: './Estedad-Bold.ttf' })
 // const geistMono = localFont({
 //   src: "./fonts/GeistMonoVF.woff",
 //   variable: "--font-geist-mono",
@@ -23,12 +25,15 @@ export const metadata: Metadata = {
   
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // console.error(myFontBold.className);
 
+  // await connectDB()
+  
 
   return (
     <html lang="fa" dir="rtl">
