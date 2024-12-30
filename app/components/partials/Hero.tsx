@@ -21,7 +21,7 @@ const Hero = () => {
     transition={{ duration: .7, delay: 0, ease: "easeOut" }} className="h-screen w-screen bg-black flex justify-center items-center">
       <Image
         alt="background"
-        src={"/images/coding_background.webp"}
+        src={"/images/coding_background.png"}
         className="object-cover opacity-30"
         layout="fill"
         quality={100}
