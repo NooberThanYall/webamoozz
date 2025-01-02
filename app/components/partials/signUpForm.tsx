@@ -65,7 +65,7 @@ export const SignUpForm = () => {
         <h1 className="text-xl text-center leading-tight tracking-tight text-gray-900 md:text-3xl dark:text-white __className_43c461">
           ثبت نام
         </h1>
-        <form className="space-y-4 md:space-y-6" action={handleSignUp}>
+        <form className="space-y-4 md:space-y-6" onSubmit={handleSignUp}>
           <div>
             <label
               htmlFor="email"
