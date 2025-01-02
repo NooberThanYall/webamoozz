@@ -2,10 +2,12 @@
 import { signUpSchema } from "../../schemas/FormSchema";
 import Link from "next/link";
 import React, { useState } from "react";
+import { z } from "zod";
 
 type Errors = {
   confirm?: string;
   general?: string;
+  zod?: string;
 };
 
 type State = {
@@ -21,7 +23,6 @@ const initialState: State = {
 };
 
 export const SignUpForm = () => {
-
   const [state, setState] = useState<State>(initialState);
 
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
@@ -38,7 +39,7 @@ export const SignUpForm = () => {
       const validated = signUpSchema.parse(values);
 
       const response = await fetch(
-        "http://127.0.0.1:3000/api/account/register",
+        "/api/account/register",
         {
           method: "POST",
           headers: {
@@ -55,7 +56,11 @@ export const SignUpForm = () => {
         setState({ success: true, message: res.message, errors: {} });
       }
     } catch (error) {
-      setState({ ...state, errors: { general: error.message } });
+      if (error instanceof z.ZodError) {
+        setState({ ...state, errors: { zod: error.message } });
+      } else {
+        setState({ ...state, errors: { general: 'هه هه هه هه ' } });
+      }
     }
   }
 
@@ -170,5 +175,3 @@ export const SignUpForm = () => {
     </div>
   );
 };
-
-
