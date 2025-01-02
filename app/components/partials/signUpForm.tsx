@@ -1,5 +1,5 @@
 "use client";
-import { signUpSchema } from "@/app/schemas/FormSchema";
+import { signUpSchema } from "../../schemas/FormSchema";
 import Link from "next/link";
 import React, { useState } from "react";
 
