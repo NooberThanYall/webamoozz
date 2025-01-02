@@ -20,7 +20,7 @@ const initialState: State = {
   message: "",
 };
 
-const SignUpForm = () => {
+export const SignUpForm = () => {
 
   const [state, setState] = useState<State>(initialState);
 
@@ -171,4 +171,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+
