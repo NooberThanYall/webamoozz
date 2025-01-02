@@ -31,43 +31,41 @@ export const SignUpForm = () => {
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    router.replace('/account/login');
+    const formData = new FormData(e.currentTarget);
+    const values = Object.fromEntries(formData.entries());
 
-    // const formData = new FormData(e.currentTarget);
-    // const values = Object.fromEntries(formData.entries());
+    if (values.password !== values.confirmPassword) {
+      setState({ ...state, errors: { confirm: "پسورد ها یکی نیستند!" } });
+    }
 
-    // if (values.password !== values.confirmPassword) {
-    //   setState({ ...state, errors: { confirm: "پسورد ها یکی نیستند!" } });
-    // }
+    try {
+      const validated = signUpSchema.parse(values);
 
-    // try {
-    //   const validated = signUpSchema.parse(values);
+      const response = await fetch(
+        "/api/account/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(validated),
+        }
+      );
+      const res = await response.json();
 
-    //   const response = await fetch(
-    //     "/api/account/register",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(validated),
-    //     }
-    //   );
-    //   const res = await response.json();
-
-    //   if (!res.success) {
-    //     setState({ ...state, errors: res.errors });
-    //   } else {
-    //     setState({ success: true, message: res.message, errors: {} });
-    //     router.
-    //   }
-    // } catch (error) {
-    //   if (error instanceof z.ZodError) {
-    //     setState({ ...state, errors: { zod: error.message } });
-    //   } else {
-    //     setState({ ...state, errors: { general: 'هه هه هه هه ' } });
-    //   }
-    // }
+      if (!res.success) {
+        setState({ ...state, errors: res.errors });
+      } else {
+        setState({ success: true, message: res.message, errors: {} });
+        router.replace('/account/login')
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setState({ ...state, errors: { zod: error.message } });
+      } else {
+        setState({ ...state, errors: { general: 'هه هه هه هه ' } });
+      }
+    }
   }
 
   return (
