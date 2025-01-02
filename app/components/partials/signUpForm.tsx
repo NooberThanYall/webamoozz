@@ -2,7 +2,7 @@
 import { signUpSchema } from "../../schemas/FormSchema";
 import Link from "next/link";
 import React, { useState } from "react";
-import { z } from "zod";
+import {z} from 'zod';
 
 type Errors = {
   confirm?: string;
