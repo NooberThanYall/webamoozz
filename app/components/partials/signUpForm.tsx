@@ -1,6 +1,8 @@
 "use client";
 import { signUpSchema } from "../../schemas/FormSchema";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import {z} from 'zod';
 
@@ -24,44 +26,48 @@ const initialState: State = {
 
 export const SignUpForm = () => {
   const [state, setState] = useState<State>(initialState);
+  const router = useRouter()
 
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const values = Object.fromEntries(formData.entries());
+    router.replace('/account/login');
 
-    if (values.password !== values.confirmPassword) {
-      setState({ ...state, errors: { confirm: "پسورد ها یکی نیستند!" } });
-    }
+    // const formData = new FormData(e.currentTarget);
+    // const values = Object.fromEntries(formData.entries());
 
-    try {
-      const validated = signUpSchema.parse(values);
+    // if (values.password !== values.confirmPassword) {
+    //   setState({ ...state, errors: { confirm: "پسورد ها یکی نیستند!" } });
+    // }
 
-      const response = await fetch(
-        "/api/account/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(validated),
-        }
-      );
-      const res = await response.json();
+    // try {
+    //   const validated = signUpSchema.parse(values);
 
-      if (!res.success) {
-        setState({ ...state, errors: res.errors });
-      } else {
-        setState({ success: true, message: res.message, errors: {} });
-      }
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        setState({ ...state, errors: { zod: error.message } });
-      } else {
-        setState({ ...state, errors: { general: 'هه هه هه هه ' } });
-      }
-    }
+    //   const response = await fetch(
+    //     "/api/account/register",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(validated),
+    //     }
+    //   );
+    //   const res = await response.json();
+
+    //   if (!res.success) {
+    //     setState({ ...state, errors: res.errors });
+    //   } else {
+    //     setState({ success: true, message: res.message, errors: {} });
+    //     router.
+    //   }
+    // } catch (error) {
+    //   if (error instanceof z.ZodError) {
+    //     setState({ ...state, errors: { zod: error.message } });
+    //   } else {
+    //     setState({ ...state, errors: { general: 'هه هه هه هه ' } });
+    //   }
+    // }
   }
 
   return (
