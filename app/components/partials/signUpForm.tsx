@@ -2,7 +2,7 @@
 import { signUpSchema } from "../../schemas/FormSchema";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import {z} from 'zod';
 
@@ -26,7 +26,7 @@ const initialState: State = {
 
 export const SignUpForm = () => {
   const [state, setState] = useState<State>(initialState);
-  const router = useRouter()
+  const router = useRouter();
 
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -57,7 +57,7 @@ export const SignUpForm = () => {
         setState({ ...state, errors: res.errors });
       } else {
         setState({ success: true, message: res.message, errors: {} });
-        router.replace('/account/login')
+        router.replace('/account/login');
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
