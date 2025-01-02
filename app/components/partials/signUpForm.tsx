@@ -2,6 +2,7 @@
 import { signUpSchema } from "../../schemas/FormSchema";
 import Link from "next/link";
 import React, { useState } from "react";
+import {z} form 'zod'
 
 type Errors = {
   confirm?: string;
@@ -55,7 +56,11 @@ export const SignUpForm = () => {
         setState({ success: true, message: res.message, errors: {} });
       }
     } catch (error) {
-      setState({ ...state, errors: { general: error.message } });
+      if (error instanceof z.ZodError) {
+        setState({ ...state, errors: { zod: error.message } });
+      } else {
+        setState({ ...state, errors: { general: 'هه هه هه هه ' } });
+      }
     }
   }
 
