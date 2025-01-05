@@ -23,6 +23,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+   const jwt = await encrypt({
+    name: 'عبدالجانی',
+    email: 'he@of.com'
+  })
+  console.log(jwt);
 
   const session = await cookies().get('session');
   const user = session ? decrypt(value) : null;                            
