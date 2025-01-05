@@ -10,8 +10,8 @@ export const signUpSchema = z.object({
   path: ["confirmPassword"],
 })
 
-export const signInSchema = z.object({
+export const logInSchema = z.object({
   email: z.string().email('ایمیل نادرست!'),
-  password: z.string().min(1, 'Password is required'),
+  password: z.string().min(1, 'پسورد خود را وارد کنید!'),
 })
 
