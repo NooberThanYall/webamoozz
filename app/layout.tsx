@@ -25,7 +25,7 @@ export default async function RootLayout({
 }>) {
 
   const session = cookies().get('session');
-  const user = decrypt(session);                            
+  const user = decrypt(session.value);                            
   return (
     <html lang="fa" dir="rtl">
       <body className={`${myFont.className} antialiased `}>
