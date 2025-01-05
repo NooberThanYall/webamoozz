@@ -11,7 +11,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/app/components/ui/sheet";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const navItems = [
+let navItems = [
   { title: "خانه", href: "/", icon: <House height={18} /> },
   { title: "دوره ها", href: "/about", icon: <BookOpen height={18} /> },
   { title: "مقالات", href: "/services", icon: <Newspaper height={18} /> },
@@ -20,8 +20,19 @@ const navItems = [
   // { title: "Contact", href: "/contact" },
 ];
 
-export function Navbar() {
+export function Navbar({user}) {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  if (user) {
+    const sliced = navItems.slice(-2)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    navItems = sliced.push({
+      title: user.name,
+      href: '/dashboard',
+      icon: <User height={18} />
+    }) 
+  }
 
   return (
     <motion.nav

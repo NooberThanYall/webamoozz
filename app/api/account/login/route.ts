@@ -3,7 +3,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/app/models/UserModel";
 import connectDB from "@/lib/db/mongodb";
-import { generateToken } from "@/lib/auth/jwt";
 
 export async function POST(req: NextRequest) {
   await connectDB();
@@ -15,11 +14,9 @@ export async function POST(req: NextRequest) {
     if (!user) throw new Error("کاربری با این ایمیل یافت نشد!");
 
     if (user.password === password) {
-      const token = generateToken(user._id);
       return NextResponse.json({
         success: true,
-        user: { email, name, password },
-        token,
+        user: { email, name },
       });
     }
   } catch (err) {

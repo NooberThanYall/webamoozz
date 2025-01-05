@@ -2,6 +2,7 @@
 import React, { useRef } from 'react'
 import Image from 'next/image';
 import { motion, useInView, Variants } from 'framer-motion';
+import { encrypt } from '@/lib/auth/jwt';
 
 type infoType = {
   title: string,
@@ -37,6 +38,12 @@ const childrenVariantsY: Variants = {
 const TheImageAndTextThing = ({i, info, orders}: {i: number, info: infoType, orders: number[], }) => {
   const bigAssRef = useRef(null);
   const inView = useInView(bigAssRef)
+
+  const sth = encrypt({
+    name: 'kok',
+    email: 'kk@of.com'
+  })
+  console.log(sth);
 
   return (
     <motion.div className='md:w-full flex flex-col md:flex-row justify-between items-center w-[80%] md:border-none border-green-400 border-b border-solid py-4' ref={bigAssRef}
