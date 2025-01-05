@@ -30,7 +30,7 @@ export default async function RootLayout({
   console.log(jwt);
 
   const session = await cookies().get('session');
-  const user = session ? decrypt(session.value) : null;                            
+  const user = session ? await decrypt(session.value) : null;                            
   return (
     <html lang="fa" dir="rtl">
       <body className={`${myFont.className} antialiased `}>
