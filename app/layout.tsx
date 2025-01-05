@@ -23,10 +23,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const session = cookies().get('session');
+  const user = decrypt(session);                            
   return (
     <html lang="fa" dir="rtl">
       <body className={`${myFont.className} antialiased `}>
-          <Navbar user={null} />
+          <Navbar user={user} />
           <main className="overflow-hidden">{children}</main>
           <Analytics />
           <SpeedInsights />
