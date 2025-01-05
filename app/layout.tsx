@@ -24,8 +24,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const session = cookies().get('session');
-  const user = decrypt(session.value);                            
+  const {value} = cookies().get('session');
+  const user = decrypt(value);                            
   return (
     <html lang="fa" dir="rtl">
       <body className={`${myFont.className} antialiased `}>
