@@ -24,7 +24,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const {value} = cookies().get('session');
+  const {value} = await cookies().get('session');
   const user = decrypt(value);                            
   return (
     <html lang="fa" dir="rtl">
