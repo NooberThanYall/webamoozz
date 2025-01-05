@@ -6,7 +6,7 @@ import connectDB from "@/lib/db/mongodb";
 
 export async function POST(req: NextRequest) {
   await connectDB();
-  const { email, password, name } = req.json();
+  const { email, password, name } = await req.json();
 
   try {
     const user = await User.findOne({ email });
