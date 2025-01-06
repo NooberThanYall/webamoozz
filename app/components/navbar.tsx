@@ -23,16 +23,16 @@ let navItems = [
 export function Navbar({user}) {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  if (user) {
-    const sliced = navItems.slice(-2)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    navItems = sliced.push({
+ if (user) {
+  navItems = [
+    ...navItems.slice(0, -2),
+    {
       title: user.name,
-      href: '/dashboard',
-      icon: <User height={18} />
-    }) 
-  }
+      href: "/dashboard",
+      icon: <User height={18} />,
+    },
+  ];
+}
 
   return (
     <motion.nav
